@@ -30,9 +30,26 @@ The script should:
 Once your pi is plugged into the network, move into directory of the thing you want to provision and run the `kick-off.sh` script.
 
 You can use one of these scripts to setup the following servers:
+- Docker
+- Cups
 - Snort
 - ELK Stack
 - DVWA
+
+TODO: potentially useful servers to setup in the future
+- [UNIFI](https://pimylifeup.com/rasberry-pi-unifi/)
+- [JENKINS](https://pimylifeup.com/jenkins-raspberry-pi/)
+- [Pi-hole](https://pimylifeup.com/raspberry-pi-pi-hole/)
+- [grafana](https://pimylifeup.com/raspberry-pi-grafana/)
+- [mySQL](https://pimylifeup.com/raspberry-pi-mysql/)
+- [samba](https://pimylifeup.com/raspberry-pi-samba/)
+- [Plex](https://pimylifeup.com/raspberry-pi-plex-server/)
+- [Kismet](https://pimylifeup.com/raspberry-pi-network-scanner/)
+- [fail2ban](https://pimylifeup.com/raspberry-pi-fail2ban/)
+- [speedmonitor](https://pimylifeup.com/raspberry-pi-internet-speed-monitor/)
+- [Nextcloud](https://pimylifeup.com/raspberry-pi-nextcloud-server/)
+- [TOR access point](https://pimylifeup.com/raspberry-pi-tor-access-point/)
+- [openvpn](https://pimylifeup.com/raspberry-pi-vpn-access-point/)
 
 You can also configure a pi to send logs or docker metrics to an ELK server:
 - Filebeat
