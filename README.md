@@ -4,8 +4,8 @@
 ---
 ### Main Concept
 
-The idea for these scripts is to have a repo of complete provisioning scripts for a headless Raspberry Pi Server.
-I want to be able to burn a [headless Raspbian image](https://www.raspberrypi.org/downloads/) onto an SD card, plug the pi into a switch (using ethernet) and run a provisioning script.
+The idea for these scripts is to have a repo of complete bootstrap provisioners for a headless Raspberry Pi Server.
+I want to be able to burn a [headless Raspbian image](https://www.raspberrypi.org/downloads/) onto an SD card, plug the pi into a switch and run a provisioning script.
 
 The script should:
 - Wait for the pi to come online at `raspberrypi.local` 
@@ -13,7 +13,9 @@ The script should:
 - Configure Ansible to read the correct inventory file
 - Kick-off Ansible Provisioning
 - Provisioning will end with changing the hostname to match the service installed and reboot if needed.
+    - Provisioning can include system hardening and password changes.
 - The only manual interaction should be accepting the key and authenticating with the pi during the `ssh-copy-id` command.
+    - If you figure out how to automate this part, make a pull request?
 
 ### Requirements
 
