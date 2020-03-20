@@ -1,0 +1,6 @@
+auto wlan0
+iface wlan0 inet manual
+up ifconfig 0.0.0.0 up
+up ip link set wlan0 promisc on
+down ip link set wlan0 promisc off
+down ip link set wlan0 down
