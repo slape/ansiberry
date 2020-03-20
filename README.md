@@ -20,7 +20,9 @@ The script should:
 - [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html) must be installed on the workstation from which you run these scripts.
     - No Ansible configuration needs to be done as the script will point Ansible to it's included `inventory` file.
     - I am using [Ansible Roles](https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html) for the file structure, each service is a role.
-    - To choose a specific role, find the `provisioners/main.yml` file and uncomment the service you want. It should resemble:
+    - To choose a specific role, find the `provisioners/main.yml` file and uncomment the service you want. 
+    
+`provisioners/main.ym` should resemble:
 
 ```bash
 ---
