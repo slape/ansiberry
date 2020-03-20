@@ -1,6 +1,6 @@
 # ansiberry
 
-## Ansible Scripts for configuring a Raspberry Pi
+## Ansible playbooks for provisioning a Raspberry Pi
 ---
 ### Main Concept
 
@@ -89,6 +89,7 @@ TODO: potentially useful server roles to setup in the future
 - [Nextcloud](https://pimylifeup.com/raspberry-pi-nextcloud-server/)
 - [TOR access point](https://pimylifeup.com/raspberry-pi-tor-access-point/)
 - [openvpn](https://pimylifeup.com/raspberry-pi-vpn-access-point/)
+- [twitterbot](https://www.instructables.com/id/Raspberry-Pi-Twitterbot/)
 
 You can also configure a pi to send logs or docker metrics to an ELK server:
 - Filebeat
