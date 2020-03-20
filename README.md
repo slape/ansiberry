@@ -15,7 +15,7 @@ The script should:
 - Provisioning will end with changing the hostname to match the service installed and reboot if needed.
     - Provisioning can include system hardening and password changes.
 - The only manual interaction should be accepting the key and authenticating with the pi during the `ssh-copy-id` command.
-    - If you figure out how to automate this part, make a pull request?
+    - If you know how to automate this part, make a pull request?
 
 ### Requirements
 
