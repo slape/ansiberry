@@ -1,0 +1,11 @@
+---
+- hosts: raspberrypi.local
+  remote_user: pi
+  become: yes
+  tasks:
+
+  - name: Install Snort
+    apt:
+      update_cache: yes
+      pkg:
+      - snort 
