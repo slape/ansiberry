@@ -10,4 +10,4 @@
     # - ELK
     # - Filebeat
     # - Metricbeat
-    # - Snort 
+    - Snort 

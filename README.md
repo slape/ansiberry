@@ -34,16 +34,35 @@ The script should:
     # - Snort
 ```
 
-Any service that is un-commented here will run when you kick off the bootstrap.sh script.
+Any role/service that is un-commented here will run when you kick off the bootstrap.sh script.
 
-- Ansible will use your default ssh key, so it must be present.
-    - To generate an ssh key, run `ssh-keygen`
+#### SSH Requirements
+##### Enabling SSH on the PI
+`ssh` is disabled by default on Raspbian. To enable it a file named `ssh` must be added to the `BOOT` partition of the SD card.
+Follow these steps:
+- Burn [Raspbian Lite](https://www.raspberrypi.org/downloads/) onto an SD card. 
+    - [Etcher](https://www.balena.io/etcher/) is an easy to use tool for this.
+- Before ejecting the SD card, create a file named `ssh` on the `BOOT` partition.
+    - This file only needs the name `ssh` and does not have any other requirements. (nothing inside the file and no permissions change).
+- Eject the SD card and insert it into the raspberry pi.
+- When the Pi boots up, Raspbian enables ssh and deletes this ssh file. 
 
-- Because `ssh` is disabled by default on Raspbian, a file named `ssh` must be added to the `BOOT` partition of the SD card _after_ burning the raspbian image. The ssh file can be empty or have text and it can be added from the same computer you use to burn the card. When the pi boots up, Raspbian enables ssh and deletes the ssh file. More info on that [HERE](https://www.raspberrypi.org/documentation/remote-access/ssh/).
+Official info on this [HERE](https://www.raspberrypi.org/documentation/remote-access/ssh/).
+
+##### Enabling SSH on the machine running Ansible
+On your Ansisble control machine Ansible will try to use your default ssh key, so it must be present.
+- To generate an ssh key, run `ssh-keygen`
 
 ### Kicking off the script
 
-Once your pi is plugged into the network and you have edited the `provisioners/main.yml` to include the service you want, from the main `ansiberry` directory, run the `bootstrap.sh` script.
+At this point you should have:
+- Added an `ssh` file to the `BOOT` partition of SD card for the PI
+- Edited the `provisioners/main.yml` to include the service you want
+- Plugged the SD card into the Pi and the Pi into your network (and the pi plugged into power, of course). 
+
+From the main `ansiberry` directory, run the `bootstrap.sh` script with: `bash bootstrap.sh`
+
+### Options
 
 You can use one of these server roles to setup the following servers:
 - Docker
