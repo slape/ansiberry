@@ -2,10 +2,11 @@
 
 export ANSIBLE_INVENTORY=../inventory
 
-printf "%s" "Waiting for Raspberry Pi to come online..."
-while ! ping -c 1 -n -w 1 raspberrypi.local &> /dev/null
+printf "\n%s" "Waiting for Raspberry Pi to come online..."
+while ! ping -c 1 raspberrypi.local &> /dev/null
 do
-    printf "%c" "."
+    printf "%c" " ..."
+    sleep 1
 done
 printf "\n%s\n"  "Raspberry Pi is online. Copying over SSH key."
 
