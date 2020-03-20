@@ -1,6 +1,6 @@
 # ansiberry
 
-## Ansible playbooks for provisioning a Raspberry Pi
+## Ansible playbooks for bootstrap provisioning a Raspberry Pi
 ---
 ### Main Concept
 
