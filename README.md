@@ -59,6 +59,7 @@ On your Ansisble control machine Ansible will try to use your default ssh key, s
 
 At this point you should have:
 - Added an `ssh` file to the `BOOT` partition of SD card for the PI
+- Verified that you have a default ssh key in `~/.ssh/id_rsa.pub`
 - Edited the `provisioners/main.yml` to include the service you want
 - Plugged the SD card into the Pi and the Pi into your network.
     - The Pi also needs to be plugged into power, unless you get one of these [cool PoE adapters.](https://www.amazon.com/poe-hat/dp/B07GR9XQJH)
