@@ -1,10 +1,4 @@
 ---
-- name: Config elk VM with Docker
-  hosts: raspberrypi.local
-  remote_user: pi
-  become: true
-  tasks:
-  
   - name: Install Docker for raspberrypi
     shell: curl -sSL https://get.docker.com | sh
   

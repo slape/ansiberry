@@ -19,6 +19,22 @@ The script should:
 
 - [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html) must be installed on the workstation from which you run these scripts.
     - No Ansible configuration needs to be done as the script will point Ansible to it's included `inventory` file.
+    - I am using [Ansible Roles](https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html) for the file structure, each service is a role.
+    - To choose a specific role, find the `provisioners/main.yml` file and uncomment the service you want. It should resemble:
+
+```bash
+---
+- name: Provision Raspberry Pi
+  hosts: raspberrypi.local
+  remote_user: pi
+  become: yes
+  roles:
+    - Cups
+    # - DVWA
+    # - Snort
+```
+
+Any service that is un-commented here will run when you kick off the bootstrap.sh script.
 
 - Ansible will use your default ssh key, so it must be present.
     - To generate an ssh key, run `ssh-keygen`
@@ -27,16 +43,16 @@ The script should:
 
 ### Kicking off the script
 
-Once your pi is plugged into the network, move into directory of the thing you want to provision and run the `kick-off.sh` script.
+Once your pi is plugged into the network and you have edited the `provisioners/main.yml` to include the service you want, from the main `ansiberry` directory, run the `bootstrap.sh` script.
 
-You can use one of these scripts to setup the following servers:
+You can use one of these server roles to setup the following servers:
 - Docker
 - Cups
 - Snort
 - ELK Stack
 - DVWA
 
-TODO: potentially useful servers to setup in the future
+TODO: potentially useful server roles to setup in the future
 - [UNIFI](https://pimylifeup.com/rasberry-pi-unifi/)
 - [JENKINS](https://pimylifeup.com/jenkins-raspberry-pi/)
 - [Pi-hole](https://pimylifeup.com/raspberry-pi-pi-hole/)

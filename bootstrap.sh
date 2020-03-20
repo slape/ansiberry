@@ -1,6 +1,6 @@
 #!/usr/local/env bash
 
-export ANSIBLE_INVENTORY=../inventory
+export ANSIBLE_INVENTORY=./provisioners/inventory
 
 printf "\n%s" "Waiting for Raspberry Pi to come online..."
 while ! ping -c 1 raspberrypi.local &> /dev/null
@@ -12,4 +12,4 @@ printf "\n%s\n"  "Raspberry Pi is online. Copying over SSH key."
 
 ssh-copy-id pi@raspberrypi.local
 
-ansible-playbook playbook
+ansible-playbook provisioners/main.yml

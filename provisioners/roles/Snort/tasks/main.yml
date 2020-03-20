@@ -1,0 +1,6 @@
+---
+  - name: Install Snort
+    apt:
+      update_cache: yes
+      pkg:
+      - snort 

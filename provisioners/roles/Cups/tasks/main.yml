@@ -1,0 +1,38 @@
+---
+  - name: Update apt and install cups and samba packages
+    apt:
+      update_cache: yes
+      pkg:
+      - cups
+      - samba
+
+  - name: Add pi user to lpadmin
+    command: usermod -a -G lpadmin pi
+
+  - name: Enable the Cups and samba services
+    command: cupsctl --remote-any
+    command: /etc/init.d/cups restart
+    command: /etc/init.d/samba restart
+
+
+TODO: ADD the following lines to the samba file:
+    # CUPS printing.  
+[printers]
+comment = All Printers
+browseable = no
+path = /var/spool/samba
+printable = yes
+guest ok = yes
+read only = yes
+create mask = 0700
+
+# Windows clients look for this share name as a source of downloadable
+# printer drivers
+[print$]
+comment = Printer Drivers
+path = /var/lib/samba/printers
+browseable = yes
+read only = no
+guest ok = no
+
+Echo where cups interface can be located: `raspberrypi.local:631`
