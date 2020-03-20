@@ -1,25 +1,12 @@
 ---
 - name: Config elk VM with Docker
-  hosts: elkservers
-  remote_user: elk
+  hosts: raspberrypi.local
+  remote_user: pi
   become: true
   tasks:
-  - name: docker.io
-    apt:
-      force_apt_get: yes
-      name: docker.io
-      state: present
-      
-  - name: Install pip
-    apt:
-      force_apt_get: yes
-      name: python-pip
-      state: present
-
-  - name: Install Docker python module
-    pip:
-      name: docker
-      state: present
+  
+  - name: Install Docker for raspberrypi
+    shell: curl -sSL https://get.docker.com | sh
   
   - name: increase virtual memory
     command: sysctl -w vm.max_map_count=262144

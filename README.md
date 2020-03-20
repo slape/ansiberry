@@ -12,6 +12,7 @@ The script should:
 - Once the pi is detected, use `ssh-copy-id` to copy over my ssh key
 - Configure Ansible to read the correct inventory file
 - Kick-off Ansible Provisioning
+- Provisioning will end with changing the hostname to match the service installed and reboot if needed.
 - The only manual interaction should be accepting the key and authenticating with the pi during the `ssh-copy-id` command.
 
 ### Requirements

@@ -1,6 +1,7 @@
 ---
-- name: install metric beat
-  hosts: webservers
+- name: Installing Metric Beat
+  hosts: raspberrypi.local
+  remote_user: pi
   become: true
   tasks:
 

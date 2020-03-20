@@ -1,6 +1,7 @@
 ---
-- name: installing and launching filebeat
-  hosts: webservers
+- name: Installing and Launching Filebeat
+  hosts: raspberrypi.local
+  remote_user: pi
   become: yes
   tasks:
 

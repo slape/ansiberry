@@ -1,0 +1,17 @@
+---
+- name: Install Docker and DVWA
+  hosts: raspberrypi.local
+  remote_user: pi
+  become: true
+  tasks:
+    
+  - name: Install Docker for raspberrypi
+    shell: curl -sSL https://get.docker.com | sh
+  
+  - name: Download and launch DVWA container
+    docker_container:
+      name: dvwa
+      image: cyberxsecurity/dvwa
+      state: started
+      published_ports: 80:80
+
