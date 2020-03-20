@@ -9,7 +9,7 @@ I want to be able to burn a [headless Raspbian image](https://www.raspberrypi.or
 
 The script should:
 - Wait for the pi to come online at `raspberrypi.local` 
-- Once the pi is detected, use `ssh-copy-id` to copy over my ssh key
+- Once the pi is detected, use `ssh-copy-id` to copy over the default ssh key
 - Configure Ansible to read the correct inventory file
 - Kick-off Ansible Provisioning
 - Provisioning will end with changing the hostname to match the service installed and reboot if needed.
