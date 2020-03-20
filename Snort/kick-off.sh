@@ -12,4 +12,4 @@ printf "\n%s\n"  "Raspberry Pi is online. Copying over SSH key."
 
 ssh-copy-id pi@raspberrypi.local
 
-ansible-playbook playbook
+ansible-playbook playbook.yml
