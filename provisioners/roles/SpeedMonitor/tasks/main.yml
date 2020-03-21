@@ -1,0 +1,45 @@
+---
+  - name: Install influx db
+    command: wget -qO- https://repos.influxdata.com/influxdb.key | apt-key add -
+
+  - name: Add influx to sources
+    command: echo "deb https://repos.influxdata.com/debian buster stable" | tee /etc/apt/sources.list.d/influxdb.list
+  
+  - name: Install Grafana package
+    command: wget https://dl.grafana.com/oss/release/grafana_6.6.1_armhf.deb
+    command: dpkg -i grafana_6.6.1_armhf.deb
+
+  - name: Install Required Packages
+    apt:
+      update_cache: yes
+      pkg:
+      - python3-pip
+      - python3-influxdb
+      - speedtest-cli
+      - influxdb
+    
+  - name: Create Directory for storing Speed Tests
+    file:
+      path: /home/pi/speedtest
+      state: directory
+      owner: pi
+      group: pi
+      mode: 0755
+
+  - name: enable and start influx db and grafana
+    command: systemctl unmask influxdb
+    command: systemctl enable influxdb
+    command: systemctl start influxdb
+    command: systemctl enable grafana-server
+    command: systemctl start grafana-server
+
+  - name: configure influx
+    shell: files/configure_influx.sh
+
+  - name: Set the script to run every 30 mins
+    cron:
+      name: "check speed"
+      minute: "*/30"
+      job: "python3 /home/pi/speedtest.py"
+
+   
