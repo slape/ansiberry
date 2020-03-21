@@ -1,0 +1,5 @@
+---
+  - name: Enable Grafana
+    systemd: 
+      name: grafana-server
+      enabled: yes
