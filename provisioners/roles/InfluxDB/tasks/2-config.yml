@@ -1,0 +1,16 @@
+---
+  - name: Enable InfluxDB
+    systemd: 
+      name: influxdb
+      enabled: yes
+      masked: no
+
+  - name: Create Influx Database
+    influxdb_database:
+      hostname: "raspberrypi.local"
+      database_name: "internetspeed"
+      username: "speedmonitor"
+      password: "pimylifeup"
+
+  - name: Configure Influx Database
+    shell: configure_influx.sh

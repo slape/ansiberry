@@ -1,17 +1,16 @@
 ---
-  - name: enable and start influx db and grafana
-    command: systemctl unmask influxdb
-    command: systemctl enable influxdb
-    command: systemctl start influxdb
- 
+  - name: Enable InfluxDB
+    systemd: 
+      name: influxdb
+      enabled: yes
+      masked: no
 
-    - name: configure influx
-    shell: files/configure_influx.sh
+  - name: Create Influx Database
+    influxdb_database:
+      hostname: "raspberrypi.local"
+      database_name: "internetspeed"
+      username: "speedmonitor"
+      password: "pimylifeup"
 
-    # configure influx db
-
-influx
-CREATE DATABASE internetspeed
-CREATE USER "speedmonitor" WITH PASSWORD 'pimylifeup'
-GRANT ALL ON "internetspeed" to "speedmonitor"
-quit
+  - name: Configure Influx Database
+    shell: configure_influx.sh
