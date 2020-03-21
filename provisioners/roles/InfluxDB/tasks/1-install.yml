@@ -1,0 +1,16 @@
+---
+  - name: Install influx key
+    apt-key: https://repos.influxdata.com/influxdb.key
+
+  - name: Add influx repo to sources
+    apt_repository: 
+        repo: 'deb https://repos.influxdata.com/debian buster stable'
+        state: present
+
+  - name: Install Required Packages
+    apt:
+    update_cache: yes
+    pkg:
+    - python3-pip
+    - python3-influxdb
+    - influxdb
