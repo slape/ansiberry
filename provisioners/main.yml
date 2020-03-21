@@ -4,10 +4,11 @@
   remote_user: pi
   become: yes
   roles:
-    # - Cups
-    # - Docker
-    # - DVWA
-    # - ELK
-    # - Filebeat
-    # - Metricbeat
-    - Snort 
+    #- Cups
+    #- Docker
+    #- DVWA
+    #- ELK
+    #- Filebeat
+    #- Metricbeat
+    #- Snort
+    - SpeedMonitor 

@@ -1,6 +1,6 @@
 import re
 import subprocess
-from influxdb import InfluxDBClient
+from InfluxDB import InfluxDBClient
 
 response = subprocess.Popen('/usr/local/bin/speedtest-cli --simple', shell=True, stdout=subprocess.PIPE).stdout.read().decode('utf-8')
 ping = re.findall('Ping:\s(.*?)\s', response, re.MULTILINE)

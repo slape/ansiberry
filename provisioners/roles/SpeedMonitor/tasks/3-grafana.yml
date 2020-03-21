@@ -1,0 +1,4 @@
+---
+  - name: enable grafana-server
+command: systemctl enable grafana-server
+command: systemctl start grafana-server

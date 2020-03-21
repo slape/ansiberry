@@ -1,0 +1,6 @@
+---
+  - name: 01 Install InfluxDB
+    import_tasks: 1-install.yml
+
+  - name: 02 Configure InfluxDB
+    import_tasks: 2-config.yml

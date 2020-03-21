@@ -1,0 +1,17 @@
+---
+  - name: enable and start influx db and grafana
+    command: systemctl unmask influxdb
+    command: systemctl enable influxdb
+    command: systemctl start influxdb
+ 
+
+    - name: configure influx
+    shell: files/configure_influx.sh
+
+    # configure influx db
+
+influx
+CREATE DATABASE internetspeed
+CREATE USER "speedmonitor" WITH PASSWORD 'pimylifeup'
+GRANT ALL ON "internetspeed" to "speedmonitor"
+quit

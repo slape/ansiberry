@@ -1,0 +1,22 @@
+---
+  - name: Create Directory for storing Speed Tests
+    file:
+      path: /home/pi/speedtest
+      state: directory
+      owner: pi
+      group: pi
+      mode: 0755
+  
+  - name: Copy python speed-test script into place
+    copy:
+      src: speedtest.py
+      dest: /home/pi/speedtest.py
+      owner: pi 
+      group: pi
+      mode: 0755
+
+  - name: Set the script to run every 30 mins
+    cron:
+      name: "check speed"
+      minute: "*/30"
+      job: "python3 /home/pi/speedtest.py"
