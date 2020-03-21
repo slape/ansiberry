@@ -24,6 +24,7 @@ speed_data = [
         }
     }
 ]
+
 client = InfluxDBClient('localhost', 8086, 'speedmonitor', 'pimylifeup', 'internetspeed')
 
 client.write_points(speed_data)
