@@ -5,7 +5,23 @@
       dest: /etc/grafana/grafana.ini
       owner: root
       group: root
-      mode: 0540
+      mode: 0640
+
+  - name: Copy over Dashboard.yaml provisioning file
+    copy:
+      src: Dashboard.yaml
+      dest: /etc/grafana/provisioning/dashboards/dashboard.yaml
+      owner: root
+      group: root
+      mode: 0640
+  
+  - name: Copy over Dashboard.json file
+    copy:
+      src: dashboard.json
+      dest: /etc/grafana/provisioning/dashboards/dashboard.json
+      owner: root
+      group: root
+      mode: 0640
 
   - name: Enable Grafana
     systemd: 
