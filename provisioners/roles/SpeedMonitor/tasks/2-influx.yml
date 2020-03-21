@@ -4,6 +4,7 @@
       name: influxdb
       enabled: yes
       masked: no
+      state: started
 
   - name: Create Influx Database
     influxdb_database:
@@ -12,5 +13,10 @@
       username: "speedmonitor"
       password: "pimylifeup"
 
-  - name: Configure Influx Database
-    shell: configure_influx.sh
+  # - name: Configure Influx Database
+  #   shell: |
+  #     influx
+  #     CREATE DATABASE internetspeed
+  #     CREATE USER "speedmonitor" WITH PASSWORD 'pimylifeup'
+  #     GRANT ALL ON "internetspeed" to "speedmonitor"
+  #     quit
