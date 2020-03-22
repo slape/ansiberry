@@ -29,6 +29,8 @@
       - influxdb
       - vim
       - tmux
+      - fail2ban
+      - ufw
 
   - name: Install Required Python Packages
     pip:
