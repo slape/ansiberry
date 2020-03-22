@@ -6,9 +6,9 @@
       masked: no
       state: started
       
-  # Pause for 10 seconds to fully enable Influx
+  # Pause for 45 seconds to fully enable Influx
   - pause:
-    seconds: 10
+      seconds: 45
   
   - name: Create Influx Database
     influxdb_database:
