@@ -7,10 +7,19 @@
         repo: 'deb https://repos.influxdata.com/debian buster stable'
         state: present
 
-  - name: Install Required Packages
+  - name: Install Required Linux Packages
     apt:
-    update_cache: yes
-    pkg:
-    - python3-pip
-    - python3-influxdb
-    - influxdb
+      update_cache: yes
+      pkg:
+      - python-pip
+      - python3-pip
+      - python3-influxdb
+      - influxdb
+      - vim
+      - tmux
+
+  - name: Install Required Python Packages
+    pip:
+      name: 
+      - requests
+      - influxdb

@@ -4,13 +4,15 @@
       name: influxdb
       enabled: yes
       masked: no
-
+      state: started
+      
+  # Pause for 45 seconds to fully enable Influx
+  - pause:
+      seconds: 40
+  
   - name: Create Influx Database
     influxdb_database:
       hostname: "raspberrypi.local"
       database_name: "internetspeed"
       username: "speedmonitor"
       password: "pimylifeup"
-
-  - name: Configure Influx Database
-    shell: configure_influx.sh
