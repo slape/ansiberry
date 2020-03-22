@@ -1,0 +1,6 @@
+---
+  - name: 01 Install Packages
+    import_tasks: 1-packages.yml
+
+  - name: 05 Raspberry Pi System Hardening
+    import_tasks: 5-harden.yml

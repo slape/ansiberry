@@ -1,0 +1,75 @@
+---
+# General System Config and Basic Host Hardening
+
+  - name: Change password for Pi user
+    user:
+      name: "pi" 
+      state: present
+      password: "$6$2VP/PDZ4$Ise41NlecdrDldrCEmO/pBL6Y2H6P/t5UBwWUBxBbSHA1LM2eyL/X4dcRwkahvp21JndNwoXV.EdrfxhaIl3c0" # Must be a hash value. This is a SHA-256 hash made with `mkpasswd --method=sha-512`. This default password is "cybersecurity" - I recommend changing it.
+      shell: /bin/bash
+
+  - name: Change Hostname to 'speedtest'
+    hostname:
+      name: speedtest
+  
+  - name: Set a cron job to keep system up to date.
+    cron:
+      name: "update ssh"
+      day: "*/1"
+      job: "apt update && apt upgrade"
+  
+  - name: Disable SSH Password Login
+    copy:
+      src: sshd_config
+      dest: /etc/ssh/sshd_config
+      owner: root
+      group: root 
+      mode: '0644'
+
+  - name: Disable WIFI interface
+    command: ifconfig wlan0 down
+    
+  - name: Create firewall rules to allow ssh
+    ufw:
+      rule: allow
+      port: '22'
+  
+  - name: Create firewall rules to allow Grafana access
+    ufw:
+      rule: allow
+      port: '3000'
+
+  - name: Create firewall rules to allow influxdb access
+    ufw:
+      rule: allow
+      port: '8086'
+
+  - name: Enable basic firewall (ufw)
+    ufw:
+      default: reject
+      direction: incoming
+      from_ip: any
+      interface: eth0
+      state: enabled
+  
+  - name: Setup Fail2Ban
+    copy: 
+      src: defaults-debian.conf
+      dest: /etc/fail2ban/jail.d/defaults-debian.conf
+      owner: root 
+      group: root 
+      mode: '0644'
+
+  - name: Enable Fail2ban
+    command: cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
+  
+  - name: reboot system
+    reboot:
+
+  - name: Require a password for sudo access
+    copy: 
+      src: 010_pi-nopasswd
+      dest: /etc/sudoers.d/010_pi-nopasswd
+      owner: root 
+      group: root 
+      mode: '0440'

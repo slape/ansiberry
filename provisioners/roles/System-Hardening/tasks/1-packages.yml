@@ -1,0 +1,12 @@
+---
+  - name: Install Required Linux Packages
+    apt:
+      update_cache: yes
+      pkg:
+      - vim
+      - tmux
+      - fail2ban
+      - ufw
+  
+  
+ 
