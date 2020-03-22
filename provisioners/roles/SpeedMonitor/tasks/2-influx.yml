@@ -7,7 +7,7 @@
       state: started
 
   - name: Wait for Influx to be fully Running
-    Shell: sleep 5
+    command: sleep 10
   
   - name: Create Influx Database
     influxdb_database:
