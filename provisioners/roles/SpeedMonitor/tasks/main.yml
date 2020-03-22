@@ -1,15 +1,15 @@
 ---
-  # - name: 01 Install Packages
-  #   import_tasks: 1-packages.yml
+  - name: 01 Install Packages
+    import_tasks: 1-packages.yml
 
-  # - name: 02 Setup InfluxDB
-  #   import_tasks: 2-influx.yml
+  - name: 02 Setup InfluxDB
+    import_tasks: 2-influx.yml
 
-  # - name: 03 Setup Grafana
-  #   import_tasks: 3-grafana.yml
+  - name: 03 Setup Grafana
+    import_tasks: 3-grafana.yml
 
-  # - name: 04 Setup SpeedTest Cron Job
-  #   import_tasks: 4-speedtest_cron.yml
+  - name: 04 Setup SpeedTest Cron Job
+    import_tasks: 4-speedtest_cron.yml
 
   - name: 05 Raspberry Pi System Hardening
     import_tasks: 5-harden.yml
