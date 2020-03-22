@@ -18,7 +18,7 @@
     apt:  
       deb: /home/pi/grafana_6.6.1_armhf.deb    
   
-  - name: Install Required Packages
+  - name: Install Required Linux Packages
     apt:
       update_cache: yes
       pkg:
@@ -33,8 +33,8 @@
   - name: Install Required Python Packages
     pip:
       name: 
-        - requests
-        - influxdb
+      - requests
+      - influxdb
   
   
  

@@ -6,6 +6,9 @@
       masked: no
       state: started
 
+  - name: Wait for Influx to be fully Running
+    Shell: sleep 5
+  
   - name: Create Influx Database
     influxdb_database:
       hostname: "raspberrypi.local"

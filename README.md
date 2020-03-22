@@ -18,7 +18,7 @@ The script should:
     - If you know how to automate this part, make a pull request?
 
 ### Requirements
-
+#### Ansible Requirements
 - [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html) must be installed on the workstation from which you run these scripts.
     - No Ansible configuration needs to be done as the script will point Ansible to it's included `inventory` file.
     - I am using [Ansible Roles](https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html) for the file structure, each service is a role.
@@ -62,6 +62,7 @@ On your Ansisble control machine Ansible will try to use your default ssh key, s
 At this point you should have:
 - Added an `ssh` file to the `BOOT` partition of SD card for the PI
 - Verified that you have a default ssh key in `~/.ssh/id_rsa.pub`
+- Verified that Ansible and nmap are installed on your workstation.
 - Edited the `provisioners/main.yml` to include the service you want
 - Plugged the SD card into the Pi and the Pi into your network.
     - The Pi also needs to be plugged into power, unless you get one of these [cool PoE adapters.](https://www.amazon.com/poe-hat/dp/B07GR9XQJH)

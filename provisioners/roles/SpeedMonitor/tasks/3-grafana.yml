@@ -4,7 +4,7 @@
       src: grafana.ini
       dest: /etc/grafana/grafana.ini
       owner: root
-      group: root
+      group: grafana
       mode: 0640
 
   - name: Copy over Dashboard.yaml provisioning file
@@ -12,7 +12,7 @@
       src: Dashboard.yaml
       dest: /etc/grafana/provisioning/dashboards/dashboard.yaml
       owner: root
-      group: root
+      group: grafana
       mode: 0640
   
   - name: Copy over Dashboard.json file
@@ -20,7 +20,15 @@
       src: dashboard.json
       dest: /etc/grafana/provisioning/dashboards/dashboard.json
       owner: root
-      group: root
+      group: grafana
+      mode: 0640
+
+  - name: Copy over influx.yaml file
+    copy:
+      src: influx.yaml
+      dest: /etc/grafana/provisioning/datasources/influx.yaml
+      owner: root
+      group: grafana
       mode: 0640
 
   - name: Enable Grafana
