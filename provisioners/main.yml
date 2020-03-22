@@ -11,4 +11,5 @@
     #- Filebeat
     #- Metricbeat
     #- Snort
-    - SpeedMonitor 
+    - SpeedMonitor
+    #- System-Hardening 
