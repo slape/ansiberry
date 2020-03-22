@@ -5,7 +5,7 @@
       dest: /etc/grafana/grafana.ini
       owner: root
       group: grafana
-      mode: 0640
+      mode: '0640'
 
   - name: Copy over Dashboard.yaml provisioning file
     copy:
@@ -13,7 +13,7 @@
       dest: /etc/grafana/provisioning/dashboards/dashboard.yaml
       owner: root
       group: grafana
-      mode: 0640
+      mode: '0640'
   
   - name: Create /var/lib/grafana/dashboards 
     file:
@@ -21,7 +21,7 @@
       state: directory
       owner: root
       group: grafana
-      mode: 0755
+      mode: '0755'
 
   - name: Copy over Dashboard.json file
     copy:
@@ -29,7 +29,7 @@
       dest: /var/lib/grafana/dashboards/dashboard.json
       owner: root
       group: grafana
-      mode: 0640
+      mode: '0640'
 
   - name: Copy over influx.yaml file
     copy:
@@ -37,7 +37,7 @@
       dest: /etc/grafana/provisioning/datasources/influx.yaml
       owner: root
       group: grafana
-      mode: 0640
+      mode: '0640'
 
   - name: Enable Grafana
     systemd: 

@@ -24,7 +24,7 @@
       dest: /etc/ssh/sshd_config
       owner: root
       group: root 
-      mode: 0644
+      mode: '0644'
 
   - name: Disable WIFI interface
     command: ifconfig wlan0 down
@@ -32,17 +32,17 @@
   - name: Create firewall rules to allow ssh
     ufw:
       rule: allow
-      port: 22
+      port: '22'
   
   - name: Create firewall rules to allow Grafana access
     ufw:
       rule: allow
-      port: 3000
+      port: '3000'
 
   - name: Create firewall rules to allow influxdb access
     ufw:
       rule: allow
-      port: 8086
+      port: '8086'
 
   - name: Enable basic firewall (ufw)
     ufw:
@@ -58,7 +58,7 @@
       dest: /etc/fail2ban/jail.d/defaults-debian.conf
       owner: root 
       group: root 
-      mode: 0644
+      mode: '0644'
 
   - name: Enable Fail2ban
     command: cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
@@ -72,4 +72,4 @@
       dest: /etc/sudoers.d/010_pi-nopasswd
       owner: root 
       group: root 
-      mode: 0440
+      mode: '0440'
