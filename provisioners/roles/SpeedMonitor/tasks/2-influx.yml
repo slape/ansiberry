@@ -8,7 +8,7 @@
       
   # Pause for 45 seconds to fully enable Influx
   - pause:
-      seconds: 45
+      seconds: 40
   
   - name: Create Influx Database
     influxdb_database:
