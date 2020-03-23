@@ -4,4 +4,6 @@ The speed monitor uses a cron job to run a python script every 30 mins. The scri
 
 The System hardening portion of the provisioning changes the hostname to `speedtest` and when it finishes, Grafana is automatically provisioned with a dashboard at `speedtest.local:3000`:
 
+Creds are: speedtest:raspberry
+
 ![GrafanaDashboard](screenshots/dashboard.png)
