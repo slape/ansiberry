@@ -46,6 +46,7 @@ Any role/service that is un-commented here will run when you kick off the bootst
 Follow these steps:
 - Burn [Raspbian Lite](https://www.raspberrypi.org/downloads/) onto an SD card. 
     - [Etcher](https://www.balena.io/etcher/) is an easy to use tool for this.
+    - `dd` works too.
 - Before ejecting the SD card, create a file named `ssh` on the `BOOT` partition.
     - This file only needs the name `ssh` and does not have any other requirements. (nothing inside the file and no permissions change).
     - The `touch` command is an easy way to create it: `touch /path/to/boot/ssh`
