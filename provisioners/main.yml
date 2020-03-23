@@ -11,5 +11,6 @@
     #- Filebeat
     #- Metricbeat
     #- Snort
+    #- Unifi
     - SpeedMonitor
     #- System-Hardening 

@@ -1,0 +1,16 @@
+---
+- name: Add the repository in the apt configuration file
+  command: echo 'deb http://www.ubnt.com/downloads/unifi/debian unifi5 ubiquiti' >> /etc/apt/sources.list
+
+- name: Install dirmngr package to manage repository keys
+  command: apt install dirmngr
+
+- name:  Add the key
+  command: apt-key adv --keyserver keyserver.ubuntu.com --recv C0A52C50
+
+- name: Install Unifi Package
+  apt:
+    update_cache: yes
+    pkg: 
+      - jdk-jre
+      - unifi
