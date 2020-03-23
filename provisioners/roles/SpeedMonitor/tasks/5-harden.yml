@@ -12,9 +12,11 @@
     hostname:
       name: speedtest
   
-  - name: Set a cron job to keep system up to date.
+  - name: Set a cron job to update everyday at 4:00am.
     cron:
       name: "update ssh"
+      minute: "0"
+      hour: "4"
       day: "*/1"
       job: "apt update && apt upgrade"
   
