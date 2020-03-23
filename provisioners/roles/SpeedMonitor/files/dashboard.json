@@ -21,7 +21,7 @@
       "cacheTimeout": null,
       "datasource": "InfluxDB",
       "gridPos": {
-        "h": 8,
+        "h": 6,
         "w": 12,
         "x": 0,
         "y": 0
@@ -39,12 +39,12 @@
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "green",
+                  "color": "blue",
                   "value": null
                 },
                 {
-                  "color": "red",
-                  "value": 80
+                  "color": "green",
+                  "value": 70
                 }
               ]
             }
@@ -172,13 +172,13 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Average Internet Speeds",
+      "title": "Average Internet Speeds Today",
       "type": "gauge"
     },
     {
       "datasource": "InfluxDB",
       "gridPos": {
-        "h": 8,
+        "h": 7,
         "w": 12,
         "x": 12,
         "y": 0
@@ -196,12 +196,12 @@
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "green",
+                  "color": "yellow",
                   "value": null
                 },
                 {
-                  "color": "red",
-                  "value": 80
+                  "color": "green",
+                  "value": 70
                 }
               ]
             }
@@ -328,16 +328,16 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Average Speeds",
+      "title": "Average Speeds last hour",
       "type": "bargauge"
     },
     {
       "datasource": "InfluxDB",
       "gridPos": {
-        "h": 9,
+        "h": 8,
         "w": 12,
         "x": 0,
-        "y": 8
+        "y": 6
       },
       "id": 4,
       "interval": "",
@@ -352,12 +352,12 @@
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "green",
+                  "color": "red",
                   "value": null
                 },
                 {
-                  "color": "red",
-                  "value": 80
+                  "color": "green",
+                  "value": 70
                 }
               ]
             }
@@ -411,7 +411,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Average Download Speed",
+      "title": "Average Download Speed last 3hrs",
       "type": "gauge"
     },
     {
@@ -423,36 +423,41 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 9,
+        "h": 7,
         "w": 12,
         "x": 12,
-        "y": 8
+        "y": 7
       },
       "hiddenSeries": false,
       "id": 2,
       "legend": {
-        "avg": false,
+        "alignAsTable": false,
+        "avg": true,
         "current": false,
-        "max": false,
-        "min": false,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
         "show": true,
         "total": false,
-        "values": false
+        "values": true
       },
       "lines": true,
-      "linewidth": 1,
+      "linewidth": 3,
       "nullPointMode": "null",
       "options": {
         "dataLinks": []
       },
       "percentage": false,
-      "pointradius": 2,
+      "pluginVersion": "6.6.1",
+      "pointradius": 3,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [],
       "spaceLength": 10,
       "stack": false,
-      "steppedLine": false,
+      "steppedLine": true,
       "targets": [
         {
           "alias": "Download Speed",
@@ -480,43 +485,6 @@
               {
                 "params": [
                   "download"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": []
-        },
-        {
-          "alias": "Ping Speed",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "internet_speed",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "B",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "ping"
                 ],
                 "type": "field"
               },
@@ -570,7 +538,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Network Speed",
+      "title": "Network Speed (last 24 hours)",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -594,20 +562,207 @@
           "show": true
         },
         {
-          "format": "short",
+          "format": "none",
           "label": null,
           "logBase": 1,
           "max": null,
           "min": null,
-          "show": true
+          "show": false
         }
       ],
       "yaxis": {
         "align": false,
         "alignLevel": null
       }
+    },
+    {
+      "cards": {
+        "cardPadding": null,
+        "cardRound": null
+      },
+      "color": {
+        "cardColor": "#b4ff00",
+        "colorScale": "sqrt",
+        "colorScheme": "interpolatePurples",
+        "exponent": 0.5,
+        "mode": "spectrum"
+      },
+      "dataFormat": "timeseries",
+      "datasource": "InfluxDB",
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 14
+      },
+      "heatmap": {},
+      "hideZeroBuckets": false,
+      "highlightCards": true,
+      "id": 10,
+      "legend": {
+        "show": false
+      },
+      "options": {},
+      "reverseYBuckets": false,
+      "targets": [
+        {
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "internet_speed",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "download"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Download speeds over the last 2 days",
+      "tooltip": {
+        "show": true,
+        "showHistogram": false
+      },
+      "type": "heatmap",
+      "xAxis": {
+        "show": true
+      },
+      "xBucketNumber": null,
+      "xBucketSize": null,
+      "yAxis": {
+        "decimals": null,
+        "format": "short",
+        "logBase": 1,
+        "max": null,
+        "min": null,
+        "show": true,
+        "splitFactor": null
+      },
+      "yBucketBound": "auto",
+      "yBucketNumber": null,
+      "yBucketSize": null
+    },
+    {
+      "cards": {
+        "cardPadding": null,
+        "cardRound": null
+      },
+      "color": {
+        "cardColor": "#b4ff00",
+        "colorScale": "sqrt",
+        "colorScheme": "interpolatePlasma",
+        "exponent": 0.5,
+        "mode": "spectrum"
+      },
+      "dataFormat": "timeseries",
+      "datasource": "InfluxDB",
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 14
+      },
+      "heatmap": {},
+      "hideZeroBuckets": false,
+      "highlightCards": true,
+      "id": 12,
+      "legend": {
+        "show": false
+      },
+      "options": {},
+      "reverseYBuckets": false,
+      "targets": [
+        {
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "internet_speed",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "upload"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Upload speeds over the last 2 Days",
+      "tooltip": {
+        "show": true,
+        "showHistogram": false
+      },
+      "type": "heatmap",
+      "xAxis": {
+        "show": true
+      },
+      "xBucketNumber": null,
+      "xBucketSize": null,
+      "yAxis": {
+        "decimals": null,
+        "format": "short",
+        "logBase": 1,
+        "max": null,
+        "min": null,
+        "show": true,
+        "splitFactor": null
+      },
+      "yBucketBound": "auto",
+      "yBucketNumber": null,
+      "yBucketSize": null
     }
   ],
+  "refresh": "30m",
   "schemaVersion": 22,
   "style": "dark",
   "tags": [],
@@ -615,10 +770,23 @@
     "list": []
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-3h",
     "to": "now"
   },
-  "timepicker": {},
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ]
+  },
   "timezone": "",
   "title": "Network Speed Monitor",
   "uid": "Uch0PkRRz",
