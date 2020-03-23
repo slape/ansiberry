@@ -8,9 +8,9 @@
       password: "$6$2VP/PDZ4$Ise41NlecdrDldrCEmO/pBL6Y2H6P/t5UBwWUBxBbSHA1LM2eyL/X4dcRwkahvp21JndNwoXV.EdrfxhaIl3c0" # Must be a hash value. This is a SHA-256 hash made with `mkpasswd --method=sha-512`. This default password is "cybersecurity" - I recommend changing it.
       shell: /bin/bash
 
-  - name: Change Hostname to 'speedtest'
+  - name: Change Hostname to 'newhostname'
     hostname:
-      name: speedtest
+      name: newhostname
   
   - name: Set a cron job to keep system up to date.
     cron:
@@ -33,16 +33,6 @@
     ufw:
       rule: allow
       port: '22'
-  
-  - name: Create firewall rules to allow Grafana access
-    ufw:
-      rule: allow
-      port: '3000'
-
-  - name: Create firewall rules to allow influxdb access
-    ufw:
-      rule: allow
-      port: '8086'
 
   - name: Enable basic firewall (ufw)
     ufw:
@@ -62,11 +52,6 @@
 
   - name: Enable Fail2ban
     command: cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
-  
-  #You can change _one_ of the following as both of them will cause the system to become unaccessible by Ansible.
-  
-  - name: reboot system
-    reboot:
 
   - name: Require a password for sudo access
     copy: 

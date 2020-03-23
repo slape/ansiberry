@@ -104,7 +104,13 @@ And you can do some basic system hardening:
 - System-Hardening
 
 ### Other
-Many of these scripts download and run docker containers to reduce development time and dependency conflicts. I'm ok with that.
+Many of these scripts download and run docker containers to reduce development time and dependency conflicts.
+
+### Troubleshooting
+
+- When running this script on multiple iterations, if you reimage the SD card with Raspbian, you will need to delete the key for `raspberrypi.local` from your `~/.ssh/known_hosts` file or the bootstrap.sh script will get hung up on 'Waiting for SSH'.
+
+- After running the system hardening role, the hostname has been changed and `sudo` will require a password. These will stop Ansible from connecting on a subsequent run.
 
 Enjoy!
 
