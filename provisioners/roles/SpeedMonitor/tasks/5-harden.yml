@@ -62,6 +62,8 @@
 
   - name: Enable Fail2ban
     command: cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
+
+  #You can change _one_ of the following as both of them will cause the system to become unaccessible by Ansible.
   
   - name: reboot system
     reboot:
