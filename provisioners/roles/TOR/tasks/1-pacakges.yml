@@ -1,0 +1,7 @@
+---
+- name: Install Unifi Package
+  apt:
+    update_cache: yes
+    pkg: 
+      - jdk-jre
+      - unifi

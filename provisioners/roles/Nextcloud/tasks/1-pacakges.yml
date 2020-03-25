@@ -1,0 +1,7 @@
+---
+- name: Install Nextcloud server
+  apt:
+    update_cache: yes
+    pkg: 
+      - jdk-jre
+      - unifi

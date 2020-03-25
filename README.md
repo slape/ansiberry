@@ -83,19 +83,6 @@ You can use one of these server roles to setup the following servers:
 - Grafana
 - InfluxDB
 
-TODO: potentially useful server roles to setup in the future
-- [UNIFI](https://pimylifeup.com/rasberry-pi-unifi/)
-- [JENKINS](https://pimylifeup.com/jenkins-raspberry-pi/)
-- [Pi-hole](https://pimylifeup.com/raspberry-pi-pi-hole/)
-- [mySQL](https://pimylifeup.com/raspberry-pi-mysql/)
-- [samba](https://pimylifeup.com/raspberry-pi-samba/)
-- [Plex](https://pimylifeup.com/raspberry-pi-plex-server/)
-- [Kismet](https://pimylifeup.com/raspberry-pi-network-scanner/)
-- [Nextcloud](https://pimylifeup.com/raspberry-pi-nextcloud-server/)
-- [TOR access point](https://pimylifeup.com/raspberry-pi-tor-access-point/)
-- [openvpn](https://pimylifeup.com/raspberry-pi-vpn-access-point/)
-- [twitterbot](https://www.instructables.com/id/Raspberry-Pi-Twitterbot/)
-
 You can also configure a pi to send logs or docker metrics to an ELK server:
 - Filebeat
 - Metricbeat

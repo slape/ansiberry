@@ -1,0 +1,7 @@
+---
+- name: Install OpenVPN
+  apt:
+    update_cache: yes
+    pkg: 
+      - jdk-jre
+      - unifi
