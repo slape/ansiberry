@@ -1,0 +1,3 @@
+---
+- name: Start Iodine
+  command: iodine -f -c 10.0.0.1 dns.tunnel

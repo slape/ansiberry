@@ -1,0 +1,9 @@
+---
+- name: Install Packages and Iodine
+  apt:
+    update_cache: yes
+    auto_update: yes
+    pkg:
+      - iodine 
+      - vim 
+      

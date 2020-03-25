@@ -1,0 +1,6 @@
+---
+- name: 01 Install Iodine and other packages
+  import_tasks: 1-packages.yml
+
+- name: 02 Start Iodine
+  import_tasks: 2-config.yml
