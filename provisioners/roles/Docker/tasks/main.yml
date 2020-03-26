@@ -1,14 +1,17 @@
----
-  - name: docker.io
-    apt:
-      force_apt_get: yes
-      update_cache: yes
-      install_recommends: yes
-      pkg: 
-        - docker.io
-        - python3-pip
+---   
+- name: Install needed packages
+  apt:
+    update_cache: yes
+    install_recommends: yes
+    pkg:
+      - git
+      - vim
+      - docker.io
+      - python3-pip
 
-  - name: Install Docker python module
-    pip:
-      name: 
-        - docker
+- name: install python docker module
+  pip:
+    name: docker
+
+- name: Install docker with raspberry pi specific script
+  shell: curl -sSL https://get.docker.com | sh
