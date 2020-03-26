@@ -1,7 +1,5 @@
 #!/usr/local/env bash
 
-export ANSIBLE_INVENTORY=./provisioners/inventory
-
 printf "\n%s" "Waiting for Raspberry Pi to come online..."
 while ! ping -c 1 raspberrypi.local &> /dev/null
 do
@@ -19,4 +17,5 @@ done
 
 echo -e "\nStarting Ansible Provision."
 sleep 1
-ansible-playbook provisioners/main.yml
+
+ansible-playbook -i provisioners/inventory provisioners/main.yml

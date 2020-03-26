@@ -1,11 +1,33 @@
 ---    
-  - name: Install Docker for raspberrypi
-    shell: curl -sSL https://get.docker.com | sh
-  
-  - name: Download and launch DVWA container
-    docker_container:
-      name: dvwa
-      image: cyberxsecurity/dvwa
-      state: started
-      published_ports: 80:80
+- name: Change Hostname to 'dvwa'
+  hostname:
+    name: dvwa
 
+- name: Copy hosts file into place
+  copy:
+    src: hosts
+    dest: /etc/hosts
+    owner: root
+    group: root
+    mode: 0644
+
+- name: docker.io
+  apt:
+    force_apt_get: yes
+    update_cache: yes
+    install_recommends: yes
+    pkg: 
+      - docker.io
+      - python3-pip
+
+- name: Install Docker python module
+  pip:
+    name: 
+      - docker
+
+- name: download and launch a docker web container
+  docker_container:
+    name: dvwa
+    image: vulnerables/web-dvwa
+    state: started
+    published_ports: 80:80

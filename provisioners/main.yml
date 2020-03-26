@@ -1,16 +1,17 @@
 ---
 - name: Provision Raspberry Pi
   hosts: raspberrypi.local
+  
   remote_user: pi
   become: yes
   roles:
     #- Cups
     #- Docker
-    #- DVWA
+    - DVWA
     #- ELK
     #- Filebeat
     #- Metricbeat
     #- Snort
     #- Unifi
-    - SpeedMonitor
-    #- System-Hardening 
+    #- SpeedMonitor
+    - System-Hardening
