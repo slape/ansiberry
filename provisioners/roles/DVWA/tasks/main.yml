@@ -1,73 +1,38 @@
 ---    
-- name: Change Hostname to 'dvwa'
-  hostname:
-    name: dvwa
-
-- name: Copy hosts file into place
-  copy:
-    src: hosts
-    dest: /etc/hosts
-    owner: root
-    group: root
-    mode: 0644
-
-# - name: 
-#   apt_repository:
-#     repo: http://ftp.de.debian.org/debian
-#     state: present
-
 - name: Install needed packages
   apt:
     update_cache: yes
     install_recommends: yes
     pkg:
-      - apache2
-      - php
-      - mariadb-server
-      - php-mysql
-      - php-gd
+      - git
+      - vim
+      - docker.io
+      - python3-pip
+
+- name: install python docker module
+  pip:
+    name: docker
 
 - name: Clone dvwa
   git:
-    repo: https://github.com/ethicalhack3r/DVWA.git
-    dest: /var/www/html/
+    repo: https://github.com/opsxcq/docker-vulnerable-dvwa.git
+    dest: ~/dvwa
     clone: yes
 
-- name: change permissions on dvwa directory
-  shell: chmod -R 0777 /var/www/html/DVWA
+- name: Install docker with raspberry pi specific script
+  shell: curl -sSL https://get.docker.com | sh
 
-- name: Create database
-  mysql_db:
-    name: dvwa
-    state: present
-
-- name: Create database user dvwa
-  mysql_user:
-    name: dvwa
-    password: p@ssw0rd
-    priv: '*.*:ALL'
-    state: present
-
-- name: remove index.html
-  file:
-    path: /var/www/html/index.html
-    state: absent
-
-- name: copy php.ini into place
+- name: Copy over arm based docker file
   copy:
-    src: php.ini
-    dest: /etc/php5/apache2/php.ini
-    owner: root
-    group: root
-    mode: 0644
-  
-- name: copy config.inc.php.dist into place
-  copy:
-    src: config.inc.php.dist
-    dest: /var/www/html/dvwa/config/config.inc.php.dist
-    owner: root
-    group: root
-    mode: 0755
+    src: Dockerfile
+    dest: ~/dvwa/Dockerfile
 
-- name: Restart
-  reboot:
+- name: Build dockerfile (takes several mins)
+  shell: docker build -t dvwa ~/dvwa
+
+- name: Run dvwa docker container
+  docker_container:
+    image: dvwa
+    name: dvwa_
+    published_ports: 0.0.0.0:80:80
+    state: started
