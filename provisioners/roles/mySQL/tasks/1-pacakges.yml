@@ -1,6 +1,0 @@
----
-- name: Install mySQL
-  apt:
-    update_cache: yes
-    pkg: 
-      - mysql-server

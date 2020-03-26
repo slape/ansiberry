@@ -1,4 +1,4 @@
----    
+---
 - name: Change Hostname to 'dvwa'
   hostname:
     name: dvwa
@@ -26,32 +26,6 @@
       - mariadb-server
       - php-mysql
       - php-gd
-
-- name: Clone dvwa
-  git:
-    repo: https://github.com/ethicalhack3r/DVWA.git
-    dest: /var/www/html/
-    clone: yes
-
-- name: change permissions on dvwa directory
-  shell: chmod -R 0777 /var/www/html/DVWA
-
-- name: Create database
-  mysql_db:
-    name: dvwa
-    state: present
-
-- name: Create database user dvwa
-  mysql_user:
-    name: dvwa
-    password: p@ssw0rd
-    priv: '*.*:ALL'
-    state: present
-
-- name: remove index.html
-  file:
-    path: /var/www/html/index.html
-    state: absent
 
 - name: copy php.ini into place
   copy:
